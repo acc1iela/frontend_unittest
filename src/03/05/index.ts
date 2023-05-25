@@ -6,23 +6,9 @@ function checkRange(value: number) {
   }
 }
 
-// export function add(a: number, b: number) {
-//   checkRange(a);
-//   checkRange(b);
-//   const sum = a + b;
-//   if (sum > 100) {
-//     return 100;
-//   }
-//   return sum;
-// }
-
 export function add(a: number, b: number) {
-  if (a < 0 || b > 100) {
-    throw new RangeError('入力値は0〜100の間で入力してください');
-  }
-  if (b < 0 || b > 100) {
-    throw new Error('入力値は0~100の間で入力してください');
-  }
+  checkRange(a);
+  checkRange(b);
   const sum = a + b;
   if (sum > 100) {
     return 100;
