@@ -1,38 +1,38 @@
-import { timeout, wait } from ".";
+import { timeout, wait } from '.';
 
-describe("非同期処理", () => {
-  describe("wait", () => {
-    test("指定時間待つと、経過時間をもって resolve される", () => {
+describe('非同期処理', () => {
+  describe('wait', () => {
+    test('指定時間待つと、経過時間をもって resolve される', () => {
       return wait(50).then((duration) => {
         expect(duration).toBe(50);
       });
     });
-    test("指定時間待つと、経過時間をもって resolve される", () => {
+    test('指定時間待つと、経過時間をもって resolve される', () => {
       return expect(wait(50)).resolves.toBe(50);
     });
-    test("指定時間待つと、経過時間をもって resolve される", async () => {
+    test('指定時間待つと、経過時間をもって resolve される', async () => {
       await expect(wait(50)).resolves.toBe(50);
     });
-    test("指定時間待つと、経過時間をもって resolve される", async () => {
+    test('指定時間待つと、経過時間をもって resolve される', async () => {
       expect(await wait(50)).toBe(50);
     });
   });
-  describe("timeout", () => {
-    test("指定時間待つと、経過時間をもって reject される", () => {
+  describe('timeout', () => {
+    test('指定時間待つと、経過時間をもって reject される', () => {
       return timeout(50).catch((duration) => {
         expect(duration).toBe(50);
       });
     });
-    test("指定時間待つと、経過時間をもって reject される", () => {
+    test('指定時間待つと、経過時間をもって reject される', () => {
       return expect(timeout(50)).rejects.toBe(50);
     });
-    test("指定時間待つと、経過時間をもって reject される", async () => {
+    test('指定時間待つと、経過時間をもって reject される', async () => {
       await expect(timeout(50)).rejects.toBe(50);
     });
   });
 });
 
-test("指定時間待つと、経過時間をもって reject される", async () => {
+test('指定時間待つと、経過時間をもって reject される', async () => {
   expect.assertions(1);
   try {
     await timeout(50); // timeout関数のつもりが、wait関数にしてしまった
@@ -43,7 +43,7 @@ test("指定時間待つと、経過時間をもって reject される", async 
   }
 });
 
-test("return していないため、Promise が解決する前にテストが終了してしまう", () => {
+test('return していないため、Promise が解決する前にテストが終了してしまう', () => {
   // 失敗を期待して書かれたアサーション
   expect(wait(2000)).resolves.toBe(3000);
   // 正しくはアサーションを return する
